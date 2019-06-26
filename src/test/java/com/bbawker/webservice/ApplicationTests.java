@@ -1,4 +1,4 @@
-package com.bbawker.springwebservice;
+package com.bbawker.webservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
