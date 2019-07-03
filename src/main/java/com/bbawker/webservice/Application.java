@@ -11,7 +11,10 @@ public class Application {
 
     public static final String APPLICATION_LOCATIONS = "spring.config.location="
             + "classpath:application.yml,"
+            ////운영용////
             + "/app/config/springboot-webservice/real-application.yml";
+            ////로컬용////
+//             + "C:/Users/sehyu/app/config/springboot-webservice/real-application.yml";
 
 
 

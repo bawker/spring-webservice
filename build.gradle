@@ -33,7 +33,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15'
     compile('org.springframework.boot:spring-boot-devtools')
-//    compile("org.mariadb.jdbc:mariadb-java-client")
+    compile("org.mariadb.jdbc:mariadb-java-client")
     runtime('com.h2database:h2')
     compileOnly('org.projectlombok:lombok')
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
