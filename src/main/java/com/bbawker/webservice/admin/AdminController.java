@@ -41,15 +41,26 @@ public class AdminController {
         Accounts user = accountsService.LoginProc(dto);
 
         if(user == null) {
+            System.out.println("로그인 실패1");
             return "redirect:/admin/login";
         }
 
         if(!dto.getPassword().equals(user.getPassword())) {
+            System.out.println("로그인 실패2");
             return "redirect:/admin/login";
         }
 
         session.setAttribute("user", user);
+        System.out.println("로그인 성공");
 
         return "redirect:/admin";
+    }
+
+    @GetMapping("/admin/logout")
+    public String logoutAccount(HttpSession session) {
+        session.removeAttribute("user");
+        System.out.println("로그아웃 성공");
+
+        return "redirect:/admin/login";
     }
 }
