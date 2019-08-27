@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @RestController -> @ResponseBody를 모든 메소드에서 적용해줌
  *
  * postsRepository 필드에 @Autowired가 없음 -> 생성자로 주입받는 방식 ->
- * @AllArgsConstructordl 에서 대신 생성해줌 (실제소스는 아래와 같음)
+ * @AllArgsConstructor 에서 대신 생성해줌 (실제소스는 아래와 같음)
  *      @RestController
  *          public class WebRestController {
  *          private PostsRepository postsRepository;

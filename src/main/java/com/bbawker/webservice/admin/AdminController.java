@@ -3,8 +3,10 @@ package com.bbawker.webservice.admin;
 import com.bbawker.webservice.domain.accounts.Accounts;
 import com.bbawker.webservice.dto.accounts.AccountsSaveRequestDto;
 import com.bbawker.webservice.service.admin.accounts.AccountsService;
+import com.bbawker.webservice.web.HttpSessionUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +21,15 @@ public class AdminController {
     private AccountsService accountsService;
 
     @GetMapping("/admin")
-    public String main() {
+    public String main(HttpSession session, Model model) {
+
+        boolean result = HttpSessionUtils.loginCheck(session);
+
+        if(result == false) {
+            return "redirect:/admin/login";
+        }
+
+        model.addAttribute("menu", "index");
 
         return "admin/index";
     }
@@ -38,19 +48,13 @@ public class AdminController {
 
     @PostMapping("/admin/login")
     public String loginAccount(AccountsSaveRequestDto dto, HttpSession session) {
-        Accounts user = accountsService.LoginProc(dto);
+        boolean result = accountsService.LoginProc(dto, session);
 
-        if(user == null) {
-            System.out.println("로그인 실패1");
+        if(result == false) {
+            System.out.println("로그인 실패");
             return "redirect:/admin/login";
         }
 
-        if(!dto.getPassword().equals(user.getPassword())) {
-            System.out.println("로그인 실패2");
-            return "redirect:/admin/login";
-        }
-
-        session.setAttribute("user", user);
         System.out.println("로그인 성공");
 
         return "redirect:/admin";
@@ -58,8 +62,9 @@ public class AdminController {
 
     @GetMapping("/admin/logout")
     public String logoutAccount(HttpSession session) {
-        session.removeAttribute("user");
-        System.out.println("로그아웃 성공");
+        boolean result = accountsService.LogoutProc(session);
+
+        if(result == true) System.out.println("로그아웃 성공");
 
         return "redirect:/admin/login";
     }
