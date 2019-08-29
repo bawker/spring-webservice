@@ -1,0 +1,20 @@
+{{>/practice/include/header}}
+    <div>
+        <form action="/user/update/{{user.id}}" method="post">
+            <input type="hidden" name="_method" value="put"/>
+            <div>
+                아이디 : <input type="text" name="userId" placeholder="아이디" value="{{user.userId}}"/>
+            </div>
+            <div>
+                비밀번호 : <input type="password" name="password" placeholder="비밀번호" />
+            </div>
+            <div>
+                이름 : <input type="text" name="name" placeholder="이름" value="{{user.name}}"/>
+            </div>
+            <div>
+                이메일 : <input type="email" name="email" placeholder="이메일" value="{{user.email}}"/>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{{>/practice/include/footer}}
