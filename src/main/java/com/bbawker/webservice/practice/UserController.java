@@ -36,7 +36,14 @@ public class UserController {
 
         session.setAttribute("user", user);
 
-        return "redirect:/";
+        return "redirect:/user/list";
+    }
+
+    @GetMapping("logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("user");
+
+        return "redirect:/user/loginForm";
     }
 
     @GetMapping("/join")
