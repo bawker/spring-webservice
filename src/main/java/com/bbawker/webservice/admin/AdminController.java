@@ -1,6 +1,5 @@
 package com.bbawker.webservice.admin;
 
-import com.bbawker.webservice.domain.accounts.Accounts;
 import com.bbawker.webservice.dto.accounts.AccountsSaveRequestDto;
 import com.bbawker.webservice.service.admin.accounts.AccountsService;
 import com.bbawker.webservice.web.HttpSessionUtils;
@@ -9,10 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @AllArgsConstructor

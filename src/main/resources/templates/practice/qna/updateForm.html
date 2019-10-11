@@ -1,0 +1,15 @@
+{{>/practice/include/header}}
+<div>
+    <form action="/questions/update/{{question.id}}" method="post">
+        <input type="hidden" name="_method" value="put"/>
+        <div>
+            제목 : <input type="text" name="title" placeholder="제목" value="{{question.title}}"/>
+        </div>
+        <div>
+            내용 : <textarea name="content">{{question.content}}</textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{{>/practice/include/footer}}

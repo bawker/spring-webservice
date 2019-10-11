@@ -1,0 +1,35 @@
+{{>/practice/include/header}}
+<div>
+    <table border="1" width="100%">
+        <colgroup>
+            <col width="20%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>글쓴이</th>
+            <th>등록날짜</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#questions}}
+        <tr>
+            <td>{{id}}</td>
+            <td><a href="/questions/detail/{{id}}">{{title}}</a></td>
+            <td>{{content}}</td>
+            <td>{{writer.userId}}</td>
+            <td>{{createdDate}}</td>
+            <td></td>
+        </tr>
+        {{/questions}}
+        </tbody>
+    </table>
+</div>
+{{>/practice/include/footer}}

@@ -1,5 +1,7 @@
 package com.bbawker.webservice.web;
 
+import com.bbawker.webservice.dto.practice.User;
+
 import javax.servlet.http.HttpSession;
 
 public class HttpSessionUtils {
@@ -11,7 +13,14 @@ public class HttpSessionUtils {
         if(tempUser == null) {
             return false;
         }
-
         return true;
+    }
+
+    public static User getUserFromSession(HttpSession session) {
+        if (!loginCheck(session)) {
+            return null;
+        }
+
+        return (User)session.getAttribute(USER_SESSION_KEY);
     }
 }
