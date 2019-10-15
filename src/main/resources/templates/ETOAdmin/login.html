@@ -26,7 +26,8 @@
         <h3>Welcome to EasyTakeOut</h3>
         <p>쉽게 메뉴를 등록하자!</p>
         <p>가입문의 : </p>
-        <form id="login_form" class="m-t" role="form" method="post" action="/eayAdmin/login">
+        <form id="login_form" class="m-t" role="form" method="post" action="/login">
+            <input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />
             <div class="form-group">
                 <input type="text" id="email" name="email" class="form-control" placeholder="User Email" required=""/>
             </div>

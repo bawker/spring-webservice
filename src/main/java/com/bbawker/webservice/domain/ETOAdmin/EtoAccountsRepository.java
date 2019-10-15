@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 **/
 
 public interface EtoAccountsRepository extends JpaRepository<EtoAccounts, Long> {
+    EtoAccounts findByEmail(String email);
 }

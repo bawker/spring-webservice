@@ -6,9 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -53,16 +52,29 @@ public class EtoAccounts extends BaseTimeEntity {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
     private String name;
     private String phone;
     private String subwayByLine;
     private String station_cd;
     private String station_nm;
 
+    /*
+    설정은, cascade의 경우에는 엔티티들의 영속관계를 한번에 처리하지 못하기 때문에 이에 대한 cascade 설정을 추가하는것이고,
+     member와 member_role을 둘다 동시에 조회하기 위해서 fetch 설정을 즉시 로딩으로 EAGER 설정을 주어야 에러가 발생하지 않습니다.
+     */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_etoaccounts_roles"))
+    private List <EtoAccountsRole> roles;
+
     @Builder
-    public EtoAccounts(String email, String password, String name, String phone, String subwayByLine, String station_cd, String station_nm) {
+    public EtoAccounts(String email, String password, String name, String phone, String subwayByLine, String station_cd, String station_nm, List <EtoAccountsRole> roles) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -70,6 +82,7 @@ public class EtoAccounts extends BaseTimeEntity {
         this.subwayByLine = subwayByLine;
         this.station_cd = station_cd;
         this.station_nm = station_nm;
+        this.roles = roles;
     }
 
 

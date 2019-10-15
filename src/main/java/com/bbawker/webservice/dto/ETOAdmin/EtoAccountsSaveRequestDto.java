@@ -1,9 +1,12 @@
 package com.bbawker.webservice.dto.ETOAdmin;
 
 import com.bbawker.webservice.domain.ETOAdmin.EtoAccounts;
+import com.bbawker.webservice.domain.ETOAdmin.EtoAccountsRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,6 +20,7 @@ public class EtoAccountsSaveRequestDto {
     private String subwayByLine;
     private String station_cd;
     private String station_nm;
+    private List <EtoAccountsRole> roles;
 
     public EtoAccounts toEntity(){
         return EtoAccounts.builder()
@@ -27,6 +31,7 @@ public class EtoAccountsSaveRequestDto {
                 .subwayByLine(subwayByLine)
                 .station_cd(station_cd)
                 .station_nm(station_nm)
+                .roles(roles)
                 .build();
     }
 
