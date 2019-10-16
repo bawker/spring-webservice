@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 
 /**
@@ -34,9 +35,18 @@ public class ETOController {
 
     private EtoAccountsService etoAccountsService;
 
+    @GetMapping("")
+    public String index(){
+        return "ETOAdmin/index";
+    }
 
     @GetMapping("/login")
-    public String login(HttpServletRequest request) {
+    public String login(HttpServletRequest request, Principal principal) {
+        //Principal 로그인 정보 담겨져있음
+        if(principal != null) {
+            return "redirect:/easyAdmin";
+        }
+
         String referer = request.getHeader("Referer");
         request.getSession().setAttribute("prevPage", referer);
 

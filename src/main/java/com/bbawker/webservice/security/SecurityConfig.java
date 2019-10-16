@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/easyAdmin/login")
             .and()
                 .logout()
+                .logoutSuccessUrl("/easyAdmin/login")
             .and()
                 .csrf()
                 .ignoringAntMatchers("/h2-console/**", "/api/**")
