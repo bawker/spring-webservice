@@ -50,7 +50,7 @@ public class ETOController {
         String referer = request.getHeader("Referer");
         request.getSession().setAttribute("prevPage", referer);
 
-        return "ETOAdmin/login";
+        return "/ETOAdmin/login";
     }
 
     @GetMapping("/test")
