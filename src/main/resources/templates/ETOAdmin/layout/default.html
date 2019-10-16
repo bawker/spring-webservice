@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-    <head th:replace="ETOAdmin/fragments/header :: headerFragment"></head>
+    <head th:replace="/ETOAdmin/fragments/header :: headerFragment"></head>
 
     <body>
         <div id="wrapper" >
-            <nav th:replace="ETOAdmin/fragments/left :: leftFragment">
+            <nav th:replace="/ETOAdmin/fragments/left :: leftFragment">
 
             </nav>
 
@@ -42,10 +42,10 @@
                 <div layout:fragment="content">
                 </div>
 
-                <footer th:replace="ETOAdmin/fragments/footer :: footerDiv"></footer>
+                <footer th:replace="/ETOAdmin/fragments/footer :: footerDiv"></footer>
             </div>
         </div>
-        <footer th:replace="ETOAdmin/fragments/footer :: footerFragment"></footer>
+        <footer th:replace="/ETOAdmin/fragments/footer :: footerFragment"></footer>
     </body>
 
 </html>
