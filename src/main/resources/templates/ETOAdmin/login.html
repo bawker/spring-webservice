@@ -27,7 +27,8 @@
         <p>쉽게 메뉴를 등록하자!</p>
         <p>가입문의 : </p>
         <form id="login_form" class="m-t" role="form" method="post" action="/login">
-            <input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />
+            <!--<input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />-->
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <div class="form-group">
                 <input type="text" id="email" name="email" class="form-control" placeholder="User Email" required=""/>
             </div>

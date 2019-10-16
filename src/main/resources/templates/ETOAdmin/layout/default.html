@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head th:replace="/ETOAdmin/fragments/header :: headerFragment"></head>
+
+    <body>
+        <div id="wrapper" >
+            <nav th:replace="/ETOAdmin/fragments/left :: leftFragment">
+
+            </nav>
+
+            <div id="page-wrapper" class="gray-bg" >
+                <div class="row border-bottom">
+                    <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                        <div class="navbar-header">
+                            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                            <form role="search" class="navbar-form-custom" method="post" action="#">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search"/>
+                                </div>
+                            </form>
+                        </div>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <!--<a href="/admin/logout" th:if="${session.sessionedUser}">-->
+                                    <!--<i class="fa fa-sign-out"></i> Log out-->
+                                <!--</a>-->
+                                <a class="a_logout">
+                                    <i class="fa fa-sign-out"></i> Log out
+                                </a>
+                                <form name="logout_form" action="/logout" method="post">
+                                    <!--<input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />-->
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                </form>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </div>
+
+
+                <div layout:fragment="content">
+                </div>
+
+                <footer th:replace="/ETOAdmin/fragments/footer :: footerDiv"></footer>
+            </div>
+        </div>
+        <footer th:replace="/ETOAdmin/fragments/footer :: footerFragment"></footer>
+    </body>
+
+</html>
