@@ -37,7 +37,7 @@ public class ETOController {
 
     @GetMapping("")
     public String index(){
-        return "ETOAdmin/index";
+        return "/ETOAdmin/index";
     }
 
     @GetMapping("/login")
@@ -56,13 +56,13 @@ public class ETOController {
     @GetMapping("/test")
     public String test() {
 
-        return "ETOAdmin/login";
+        return "/ETOAdmin/login";
     }
 
     @GetMapping("/createAccount")
     public String createAccount() {
 
-        return "ETOAdmin/createAccount";
+        return "/ETOAdmin/createAccount";
     }
 
     @PostMapping("/createAccount")
