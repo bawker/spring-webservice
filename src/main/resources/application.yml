@@ -1,3 +1,5 @@
+# 스프링부트 프로젝트를 실행시킬때 nohup java -jar -Dspring.profiles.active=set1와 같이 사용하면 set1에 있는 값들이 프로젝트에 할당됩니다.
+
 spring:
   profiles:
     active: local # 기본 환경 선택
