@@ -19,8 +19,8 @@
                 </div>
             </li>
 
-            <li th:classappend="${menu} == 'index' ? 'active' : ''">
-                <a href="/admin"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+            <li th:classappend="${menu} == 'createMenu' ? 'active' : ''">
+                <a href="/easyAdmin/createMenu"><i class="fa fa-th-large"></i> <span class="nav-label">Create Menu</span></a>
             </li>
             <li th:classappend="${menu} == 'question' ? 'active' : ''">
                 <a href="/admin/question"><i class="fa fa-th-large"></i> <span class="nav-label">Question</span> </a>

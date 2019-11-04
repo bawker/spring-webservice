@@ -6,6 +6,6 @@ var common = {
         });
     }
 
-}
+};
 
 common.init();

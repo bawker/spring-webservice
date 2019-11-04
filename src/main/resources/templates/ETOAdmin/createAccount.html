@@ -26,10 +26,10 @@
             <h1 class="logo-name">IN+</h1>
 
         </div>
-        <h3>Register to IN+2222</h3>
+        <h3>Register to IN+</h3>
         <p>Create account to see it in action.</p>
         <form class="m-t" role="form" action="/easyAdmin/createAccount" method="post">
-            <input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />
+            <input type="" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <div class="form-group">
                 <input type="text" name="email" class="form-control" placeholder="Email" />
             </div>
@@ -93,7 +93,7 @@
         </form>
         <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
     </div>
-</div> 
+</div>
 
 
 

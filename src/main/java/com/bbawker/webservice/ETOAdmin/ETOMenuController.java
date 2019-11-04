@@ -1,8 +1,8 @@
 package com.bbawker.webservice.ETOAdmin;
 
-import com.bbawker.webservice.dto.ETOAdmin.EtoAccountsSaveRequestDto;
+import com.bbawker.webservice.config.UploadPath;
 import com.bbawker.webservice.dto.ETOAdmin.EtoMenuSaveRequestDto;
-import com.bbawker.webservice.service.ETOAdmin.EtoAccountsService;
+import com.bbawker.webservice.service.ETOAdmin.EtoMenuService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
-
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 /**
  * @ResponseBody -> 메소드에서 리턴되는 값은 View 를 통해서 출력되지 않고 HTTP Response Body 에 직접 쓰여지게 됨
@@ -34,42 +34,43 @@ import java.security.Principal;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/easyAdmin")
-public class ETOController {
+public class ETOMenuController {
 
-    private EtoAccountsService etoAccountsService;
+    private EtoMenuService etoMenuService;
 
-    @GetMapping("")
-    public String index(){
-        return "/ETOAdmin/index";
+    UploadPath uploadPath;
+
+//    private final String UPLOADPATH = "C:\\test";
+
+    @GetMapping("/createMenu")
+    public String createMenu(Model model) {
+        model.addAttribute("menu", "createMenu");
+
+        return "/ETOAdmin/createMenu";
     }
 
-    @GetMapping("/login")
-    public String login(HttpServletRequest request, Principal principal) {
-        //Principal 로그인 정보 담겨져있음
-        if(principal != null) {
-            return "redirect:/easyAdmin";
+    @PostMapping("/createMenu")
+    public String createMenuProc(EtoMenuSaveRequestDto dto, MultipartFile file) {
+        String UPLOADPATH = uploadPath.getPath();
+
+        try {
+            String fileNm = file.getOriginalFilename();
+            String filePath = UPLOADPATH + File.separator + fileNm;
+
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
+            stream.write(file.getBytes());
+            stream.close();
+
+        } catch (Exception e) {
+
         }
 
-        String referer = request.getHeader("Referer");
-        request.getSession().setAttribute("prevPage", referer);
 
-        return "/ETOAdmin/login";
+
+
+        etoMenuService.save(dto, file);
+
+        return "redirect:/easyAdmin";
     }
-
-    @GetMapping("/createAccount")
-    public String createAccount(Principal principal) {
-        //Principal 로그인 정보 담겨져있음
-        if(principal != null) {
-            return "redirect:/easyAdmin";
-        }
-        return "/ETOAdmin/createAccount";
-    }
-
-    @PostMapping("/createAccount")
-    public  String createAccountProc(EtoAccountsSaveRequestDto dto) {
-        Long test = etoAccountsService.save(dto);
-        return "redirect:/easyAdmin/createAccount";
-    }
-
 
 }
