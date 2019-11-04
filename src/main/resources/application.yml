@@ -48,7 +48,7 @@ spring:
     prefix: classpath:/templates
 
 upload:
-  path: classpath:/static/image/
+  path: /var/www
 
 ---
 spring.profiles: set2
@@ -62,4 +62,4 @@ spring:
     prefix: classpath:/templates
 
 upload:
-  path: classpath:/static/image/
+  path: /var/www
