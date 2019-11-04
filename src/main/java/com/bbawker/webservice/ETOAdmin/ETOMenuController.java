@@ -65,10 +65,7 @@ public class ETOMenuController {
 
         }
 
-
-
-
-        etoMenuService.save(dto, file);
+        //etoMenuService.save(dto, file);
 
         return "redirect:/easyAdmin";
     }
