@@ -48,7 +48,7 @@ spring:
     prefix: classpath:/templates
 
 upload:
-  path: classpath:/templates
+  path: classpath:/static/image/
 
 ---
 spring.profiles: set2
@@ -60,3 +60,6 @@ server:
 spring:
   thymeleaf:
     prefix: classpath:/templates
+
+upload:
+  path: classpath:/static/image/
