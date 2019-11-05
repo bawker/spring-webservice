@@ -48,7 +48,8 @@ public class ETOMenuController {
 
     @GetMapping("/createMenu")
     public String createMenu(Model model) {
-        model.addAttribute("menu", "createMenu");
+        model.addAttribute("parent_menu", "menu");
+        model.addAttribute("child_menu", "create");
 
         return "/ETOAdmin/createMenu";
     }
@@ -78,6 +79,14 @@ public class ETOMenuController {
         etoMenuService.save(dto, file);
 
         return "redirect:/easyAdmin";
+    }
+
+    @GetMapping("listMenu")
+    public String listMenu(Model model) {
+        model.addAttribute("parent_menu", "menu");
+        model.addAttribute("child_menu", "list");
+
+        return "/ETOAdmin/listMenu";
     }
 
 }
