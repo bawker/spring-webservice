@@ -1,5 +1,6 @@
 package com.bbawker.webservice.service.ETOAdmin;
 
+import com.bbawker.webservice.domain.ETOAdmin.EtoAccounts;
 import com.bbawker.webservice.domain.ETOAdmin.EtoAccountsRepository;
 import com.bbawker.webservice.domain.ETOAdmin.EtoAccountsRole;
 import com.bbawker.webservice.dto.ETOAdmin.EtoAccountsRoleSaveRequestDto;
@@ -28,5 +29,10 @@ public class EtoAccountsService {
         dto.setRoles(Arrays.asList(role.toEntity()));
 
         return etoAccountsRepository.save(dto.toEntity()).getId();
+    }
+
+    @Transactional(readOnly = true)
+    public EtoAccounts findetoAccounts(String email) {
+        return etoAccountsRepository.findByEmail(email);
     }
 }

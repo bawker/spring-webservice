@@ -16,6 +16,7 @@ public class EtoMenuSaveRequestDto {
     private String description;
     private String fileName;
     private String fileType;
+    private String uploadPath;
     private byte[] data;
     private EtoAccounts etoAccounts;
 
@@ -26,6 +27,7 @@ public class EtoMenuSaveRequestDto {
                 .description(description)
                 .fileName(fileName)
                 .fileType(fileType)
+                .uploadPath(uploadPath)
                 .data(data)
                 .etoAccounts(etoAccounts)
                 .build();

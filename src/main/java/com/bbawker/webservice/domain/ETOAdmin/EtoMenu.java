@@ -59,6 +59,7 @@ public class EtoMenu extends BaseTimeEntity {
 
     private String fileName;
     private String fileType;
+    private String uploadPath;
 
     @Lob
     private byte[] data;
@@ -68,12 +69,13 @@ public class EtoMenu extends BaseTimeEntity {
     private EtoAccounts etoAccounts;
 
     @Builder
-    public EtoMenu(String title, Long price, String description, String fileName, String fileType, byte[] data, EtoAccounts etoAccounts) {
+    public EtoMenu(String title, Long price, String description, String fileName, String fileType, String uploadPath, byte[] data, EtoAccounts etoAccounts) {
         this.title = title;
         this.price = price;
         this.description = description;
         this.fileName = fileName;
         this.fileType = fileType;
+        this.uploadPath = uploadPath;
         this.data = data;
         this.etoAccounts = etoAccounts;
     }

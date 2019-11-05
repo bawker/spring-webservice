@@ -1,9 +1,13 @@
 package com.bbawker.webservice.ETOAdmin;
 
 import com.bbawker.webservice.config.UploadPath;
+import com.bbawker.webservice.domain.ETOAdmin.EtoAccounts;
 import com.bbawker.webservice.dto.ETOAdmin.EtoMenuSaveRequestDto;
+import com.bbawker.webservice.service.ETOAdmin.EtoAccountsService;
 import com.bbawker.webservice.service.ETOAdmin.EtoMenuService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.security.Principal;
 
 /**
  * @ResponseBody -> 메소드에서 리턴되는 값은 View 를 통해서 출력되지 않고 HTTP Response Body 에 직접 쓰여지게 됨
@@ -37,10 +42,9 @@ import java.io.FileOutputStream;
 public class ETOMenuController {
 
     private EtoMenuService etoMenuService;
+    private EtoAccountsService etoAccountsService;
 
     UploadPath uploadPath;
-
-//    private final String UPLOADPATH = "C:\\test";
 
     @GetMapping("/createMenu")
     public String createMenu(Model model) {
@@ -50,8 +54,9 @@ public class ETOMenuController {
     }
 
     @PostMapping("/createMenu")
-    public String createMenuProc(EtoMenuSaveRequestDto dto, MultipartFile file) {
+    public String createMenuProc(EtoMenuSaveRequestDto dto, MultipartFile file, Principal principal) {
         String UPLOADPATH = uploadPath.getPath();
+        EtoAccounts etoAccounts = etoAccountsService.findetoAccounts(principal.getName());
 
         try {
             String fileNm = file.getOriginalFilename();
@@ -65,7 +70,12 @@ public class ETOMenuController {
 
         }
 
-        //etoMenuService.save(dto, file);
+        dto.setFileName(file.getOriginalFilename());
+        dto.setFileType(file.getContentType());
+        dto.setUploadPath(UPLOADPATH);
+        dto.setEtoAccounts(etoAccounts);
+
+        etoMenuService.save(dto, file);
 
         return "redirect:/easyAdmin";
     }
