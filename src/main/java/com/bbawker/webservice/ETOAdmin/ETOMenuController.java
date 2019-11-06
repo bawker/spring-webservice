@@ -2,6 +2,7 @@ package com.bbawker.webservice.ETOAdmin;
 
 import com.bbawker.webservice.config.UploadPath;
 import com.bbawker.webservice.domain.ETOAdmin.EtoAccounts;
+import com.bbawker.webservice.domain.ETOAdmin.EtoMenu;
 import com.bbawker.webservice.dto.ETOAdmin.EtoMenuSaveRequestDto;
 import com.bbawker.webservice.service.ETOAdmin.EtoAccountsService;
 import com.bbawker.webservice.service.ETOAdmin.EtoMenuService;
@@ -82,9 +83,13 @@ public class ETOMenuController {
     }
 
     @GetMapping("listMenu")
-    public String listMenu(Model model) {
+    public String listMenu(Model model, Principal principal) {
         model.addAttribute("parent_menu", "menu");
         model.addAttribute("child_menu", "list");
+
+        EtoAccounts etoAccounts = etoAccountsService.findetoAccounts(principal.getName());
+
+        model.addAttribute("eto_menus", etoMenuService.findAll(etoAccounts));
 
         return "/ETOAdmin/listMenu";
     }

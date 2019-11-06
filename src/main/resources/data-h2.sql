@@ -8,3 +8,13 @@
 insert into ETO_ACCOUNTS (id, email, password, name, phone, subway_by_line, station_cd, station_nm, created_date, modified_date)
         values (1, 'psh',  '$2a$10$UzReJL9HPkj.o9TsyqfRRO.nqZxwEDNyOB5TbqovwFWfAuYk6EhXO', '박세현', '01029181370', '01호선', '0150', '서울역', now(), now());
 insert into ETO_ACCOUNTS_ROLE (id, role_name, roles_id, created_date, modified_date) values (1, 'ADMIN', 1, now(), now());
+insert into ETO_ACCOUNTS (id, email, password, name, phone, subway_by_line, station_cd, station_nm, created_date, modified_date)
+        values (2, 'test',  '$2a$10$UzReJL9HPkj.o9TsyqfRRO.nqZxwEDNyOB5TbqovwFWfAuYk6EhXO', 'test', '01029181370', '01호선', '0150', '서울역', now(), now());
+insert into ETO_ACCOUNTS_ROLE (id, role_name, roles_id, created_date, modified_date) values (2, 'ADMIN', 2, now(), now());
+
+insert into ETO_MENU (id, description, file_name, file_type, price, title, upload_path, eto_accounts_id, created_date, modified_date)
+        values (1, '설명란', 'test2.jpg', 'image/jpeg', 10000, '1번상품', 'C:\Users\sehyu\IdeaProjects\spring-webservice\src\main\resources\static\image\', '1', now(), now());
+insert into ETO_MENU (id, description, file_name, file_type, price, title, upload_path, eto_accounts_id, created_date, modified_date)
+        values (2, '설명란', 'test1.jpg', 'image/jpeg', 20000, '2번상품', 'C:\Users\sehyu\IdeaProjects\spring-webservice\src\main\resources\static\image\', '1', now(), now());
+insert into ETO_MENU (id, description, file_name, file_type, price, title, upload_path, eto_accounts_id, created_date, modified_date)
+        values (3, '설명란', 'test2.jpg', 'image/jpeg', 15000, '3번상품', 'C:\Users\sehyu\IdeaProjects\spring-webservice\src\main\resources\static\image\', '2', now(), now());
