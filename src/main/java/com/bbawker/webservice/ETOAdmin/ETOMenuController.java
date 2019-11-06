@@ -74,7 +74,7 @@ public class ETOMenuController {
 
         dto.setFileName(file.getOriginalFilename());
         dto.setFileType(file.getContentType());
-        dto.setUploadPath(UPLOADPATH);
+        dto.setUploadPath("/static/image/");
         dto.setEtoAccounts(etoAccounts);
 
         etoMenuService.save(dto, file);
