@@ -47,7 +47,7 @@
                             <tr th:each="menus,index : ${eto_menus}">
                                 <td th:text="${index.index}+1"></td>
                                 <td th:text="${menus.title}"></td>
-                                <td><img th:src="|${menus.uploadPath}/${menus.fileName}|"/> </td>
+                                <td><img th:src="|${menus.uploadPath}${menus.fileName}|"/> </td>
                                 <td th:text="${menus.description}"></td>
                             </tr>
                         </tbody>
