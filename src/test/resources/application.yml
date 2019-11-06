@@ -13,5 +13,6 @@ spring:
   jpa:
     show-sql: true
 
+# 테스트 돌릴때 WebConfig에서 @Value("${upload.path}") 가져 오는데 아래 부분 없으면 오류남
 upload:
   path: /var/www/
