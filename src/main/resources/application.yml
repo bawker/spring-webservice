@@ -33,7 +33,7 @@ spring:
     expose-session-attributes: true   #뷰페이지에서 session에 담긴 정보 가져올때 필요함
 
 upload:
-  path: C:\Users\sehyu\IdeaProjects\spring-webservice\src\main\resources\static\image
+  path: C:\Users\sehyu\IdeaProjects\spring-webservice\src\main\resources\static\image\
 
 # 운영 환경
 ---
@@ -48,7 +48,7 @@ spring:
     prefix: classpath:/templates
 
 upload:
-  path: /var/www
+  path: /var/www/
 
 ---
 spring.profiles: set2
@@ -62,4 +62,4 @@ spring:
     prefix: classpath:/templates
 
 upload:
-  path: /var/www
+  path: /var/www/

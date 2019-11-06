@@ -25,7 +25,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //                .addResourceLocations("classpath:/META-INF/resources/");
 
         registry.addResourceHandler("/static/image/**")
-                .addResourceLocations("file:///" + uploadImagesPath +"/")
+                .addResourceLocations("file:///" + uploadImagesPath)
                 .setCachePeriod(3600)
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());

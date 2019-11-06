@@ -12,3 +12,6 @@ spring:
   profiles: local
   jpa:
     show-sql: true
+
+upload:
+  path: /var/www/
