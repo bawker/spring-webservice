@@ -69,7 +69,8 @@ public class EtoMenu extends BaseTimeEntity {
     private EtoAccounts etoAccounts;
 
     @Builder
-    public EtoMenu(String title, Long price, String description, String fileName, String fileType, String uploadPath, byte[] data, EtoAccounts etoAccounts) {
+    public EtoMenu(Long id, String title, Long price, String description, String fileName, String fileType, String uploadPath, byte[] data, EtoAccounts etoAccounts) {
+        this.id = id;
         this.title = title;
         this.price = price;
         this.description = description;

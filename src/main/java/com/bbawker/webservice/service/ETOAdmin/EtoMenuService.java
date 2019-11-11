@@ -18,7 +18,7 @@ public class EtoMenuService {
     private EtoMenuRepository etoMenuRepository;
 
     @Transactional
-    public Long save(EtoMenuSaveRequestDto dto, MultipartFile file) {
+    public Long save(EtoMenuSaveRequestDto dto) {
 
         return etoMenuRepository.save(dto.toEntity()).getId();
     }
@@ -27,6 +27,11 @@ public class EtoMenuService {
     public List<EtoMenu> findAll(EtoAccounts etoAccounts) {
 //        return etoMenuRepository.findAll();
         return etoMenuRepository.findEtoMenuByAll(etoAccounts);
+    }
+
+    @Transactional(readOnly = true)
+    public EtoMenu findEtoMenuByOne(EtoAccounts etoAccounts, Long id) {
+        return etoMenuRepository.findEtoMenuByOne(etoAccounts, id);
     }
 
 }

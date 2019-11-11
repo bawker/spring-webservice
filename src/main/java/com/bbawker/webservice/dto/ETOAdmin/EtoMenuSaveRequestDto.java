@@ -22,6 +22,20 @@ public class EtoMenuSaveRequestDto {
 
     public EtoMenu toEntity(){
         return EtoMenu.builder()
+                .id(id)
+                .title(title)
+                .price(price)
+                .description(description)
+                .fileName(fileName)
+                .fileType(fileType)
+                .uploadPath(uploadPath)
+                .data(data)
+                .etoAccounts(etoAccounts)
+                .build();
+    }
+
+    public EtoMenu updateEntity(){
+        return EtoMenu.builder()
                 .title(title)
                 .price(price)
                 .description(description)

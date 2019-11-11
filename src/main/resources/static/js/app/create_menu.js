@@ -5,6 +5,10 @@ var createMenu = {
             $("form").submit();
         });
 
+        $(".close").on('click', function () {
+            $('#foo').attr('src', '#');
+        });
+
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -18,6 +22,8 @@ var createMenu = {
         $("#file").change(function() {
             readURL(this);
         });
+
+
 
     }
 
