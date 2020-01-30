@@ -61,7 +61,6 @@ var chat = {
                             '</div>\n' +
                             '</div>'
                             );
-
             $(".chat-discussion").scrollTop($(".chat-discussion")[0].scrollHeight);
         });
 
