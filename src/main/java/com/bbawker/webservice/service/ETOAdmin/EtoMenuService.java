@@ -34,4 +34,10 @@ public class EtoMenuService {
         return etoMenuRepository.findEtoMenuByOne(etoAccounts, id);
     }
 
+
+    @Transactional
+    public void delete(Long id) {
+        etoMenuRepository.delete(id);
+    }
+
 }

@@ -26,3 +26,8 @@ nbdist/
 .nb-gradle/
 src/main/resources/static/image/test.jpg
 src/main/resources/static/image/
+
+### socketio-chat ###
+src/main/java/com/bbawker/webservice/socketio-chat/node_modules/
+package.json
+package-lock.json

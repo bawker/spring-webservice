@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/ETOAdmin/layout/default">
+
+<div class="wrapper wrapper-content animated fadeInRight" layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox chat-view">
+                <div class="ibox-title">
+                    <small class="pull-right text-muted">Last message:  Mon Jan 26 2015 - 18:39:23</small>
+                    Chat room Channel
+                    <input type="text" id="roomid"/>
+                    <input type="button" id="roomEnter" value="입장"/>
+                </div>
+
+                <div class="ibox-content">
+
+                    <div class="row">
+
+                        <div class="col-md-9 ">
+                            <div class="chat-discussion">
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="chat-users">
+                                <div class="users-list">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="chat-message-form">
+                                <div class="form-group">
+                                    <textarea class="form-control message-input" id="message" name="message" placeholder="Enter message text"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--채팅 기본 html -->
+    <chat  style="display:none;">
+        <div class="chat-message">
+            <div class="message">
+                <span class="message-author"></span>
+                <span class="message-date"></span>
+                <span class="message-content"></span>
+            </div>
+        </div>
+    </chat>
+
+    <!--참석자 기본 html-->
+    <user style="display:none;">
+        <div class="chat-user">
+            <span class="pull-right label label-primary">Online</span>
+            <div class="chat-user-name">
+            </div>
+        </div>
+    </user>
+
+
+</div>
+
+
+
+<js layout:fragment="add_js">
+    <script src="/js/lib/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <!--socket.io js 추가-->
+    <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+    <!--custom js 추가-->
+    <script src="/js/app/chat.js"></script>
+</js>
+
+</html>

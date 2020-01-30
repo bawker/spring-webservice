@@ -177,7 +177,25 @@ public class ETOMenuController {
 
         etoMenuService.save(dto);
 
-        return "redirect:/easyAdmin";
+        return "redirect:/easyAdmin/listMenu";
+    }
+
+    @GetMapping("/deleteMenu/{id}")
+    public String deleteMenu(@PathVariable Long id, Principal principal, HttpServletResponse response) throws Exception{
+        EtoAccounts etoAccounts = etoAccountsService.findetoAccounts(principal.getName());
+        EtoMenu etoMenu = etoMenuService.findEtoMenuByOne(etoAccounts, id);
+
+        if(etoMenu == null){
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('자신의 메뉴만 삭제 가능합니다.'); location.href='/easyAdmin/listMenu'; </script>");
+            out.flush();
+
+        } else {
+            etoMenuService.delete(id);
+        }
+
+        return "redirect:/easyAdmin/listMenu";
     }
 
 }
